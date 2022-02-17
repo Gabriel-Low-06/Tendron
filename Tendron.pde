@@ -11,7 +11,7 @@ void draw() {
     rotateY(-(float)mouseX/110);
     rotateZ(-(float)mouseY/70 + PI);
     translate(-550, -350);
-    delay(100) ;
+    //delay(100) ;
     pushMatrix();
     translate(0, 700, 0);
     rotateX(1.5);
