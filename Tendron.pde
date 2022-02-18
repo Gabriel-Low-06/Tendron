@@ -4,35 +4,24 @@ void setup() {
 int timekeep=0;
 void draw() {
   if (mousePressed) {
-    timekeep=millis();
+    timekeep=millis(); //refresh tree
   }
-  //if (millis()-timekeep<9000) {
-    translate(550, 350, 0);
-    rotateY(-(float)mouseX/110);
-    rotateZ(-(float)mouseY/70 + PI);
-    translate(-550, -350);
-    //delay(100) ;
-    pushMatrix();
-    translate(0, 700, 0);
-    rotateX(1.5);
-    translate(0, -500, 0);
-    background(0);
+  background(50, 150, 255);
 
-    tendron(550, 350, 0, 60, 0, false, true);
-    popMatrix();
-    //}
-  //}
+  translate(550, 350, 0);
+  rotateY(-(float)mouseX/110); //rotate based on mouse position
+  rotateZ(-(float)mouseY/70 + PI);
+  rotateX(1.5); //rotate to face up at start
+  translate(-550, -350);
+  
+  //delay(100) ;
+  tendron(550, 350, -300, 60, 0, false, true); //draw the actual tendron, randomly generated
 }
 void line3D(float x, float y, float z, float x1, float y1, float z1) {
   stroke(100, 50, 0);
   for (int i=0; i<7; i++) {
-    line(x, y, z, x1, y1, z1);
-    x+=1;
-    x1+=1;
-    line(x, y, z, x1, y1, z1);
-    y+=1;
-    y1+=1;
-    line(x, y, z, x1, y1, z1);
+    line(x+i, y, z, x1+i, y1, z1);
+    line(x,y+i,z,x1,y1+i,z1);
   }
 }
 void tendron(int x, int y, int z, float howLong, float rot, boolean started, boolean trunk) {
@@ -64,4 +53,3 @@ void tendron(int x, int y, int z, float howLong, float rot, boolean started, boo
     }
   }
 }
-
